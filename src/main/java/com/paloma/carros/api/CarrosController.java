@@ -35,4 +35,17 @@ public class CarrosController {
         Carro carroSalvo = service.save(carro);
         return "Carro salvo: " + carroSalvo.getNome() +", id: " + carroSalvo.getId();
     }
+
+    @PutMapping("/{id}")
+    public String updateCarro(@PathVariable("id") Long id, @RequestBody Carro carro){
+        Carro carroAtualizado = service.update(carro, id);
+        return "Carro salvo: " + carroAtualizado.getNome() +", id: " + carroAtualizado.getId();
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") Long id){
+        service.delete(id);
+        return "Carro " + id + " deletado";
+    }
+
 }
