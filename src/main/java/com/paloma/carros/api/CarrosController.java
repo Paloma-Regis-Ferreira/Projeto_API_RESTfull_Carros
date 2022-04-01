@@ -29,4 +29,10 @@ public class CarrosController {
     public Iterable<Carro> findByTipo(@PathVariable("tipo") String tipo){
         return service.getCarroByTipo(tipo);
     }
+
+    @PostMapping
+    public String postCarro(@RequestBody Carro carro){
+        Carro carroSalvo = service.save(carro);
+        return "Carro salvo: " + carroSalvo.getNome() +", id: " + carroSalvo.getId();
+    }
 }
